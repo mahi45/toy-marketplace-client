@@ -32,10 +32,10 @@ const Footer = () => {
           <a className="link link-hover">Home</a>
         </div>
         <div>
-          <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <span className="footer-title">Address</span>
+          <p>
+            R-5, H-Kha-51/1, Nikunja-2, Khilkhet,<br></br> Dhaka, Bangladesh
+          </p>
         </div>
       </footer>
       <footer className="footer items-center p-4 bg-neutral text-neutral-content">
