@@ -10,11 +10,14 @@ import LoginLayout from "../Layouts/LoginLayout";
 import Home from "../Pages/Home/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import Blog from "../Pages/Blog/Blog";
+import ToyDetailsReadOnly from "../Pages/Toys/AllToys/ToyDetailsReadOnly";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginLayout></LoginLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -83,6 +86,16 @@ const router = createBrowserRouter([
             <ToyDetails></ToyDetails>
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "/toyview",
+    element: <ToysLayout></ToysLayout>,
+    children: [
+      {
+        path: "/toyview/:id",
+        element: <ToyDetailsReadOnly></ToyDetailsReadOnly>,
       },
     ],
   },

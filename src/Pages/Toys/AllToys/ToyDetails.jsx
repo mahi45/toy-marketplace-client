@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 const ToyDetails = () => {
   const navigate = useNavigate();
   const [toy, setToy] = useState([]);
+
   const { id } = useParams();
   useEffect(() => {
     fetch(`http://localhost:5000/toy/${id}`)
@@ -70,7 +71,7 @@ const ToyDetails = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
-          navigate("/alltoy");
+          navigate("/mytoys");
         }
       });
   };

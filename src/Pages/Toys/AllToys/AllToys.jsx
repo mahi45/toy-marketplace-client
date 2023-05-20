@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const AllToys = () => {
   const [alltoys, setAlltoys] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:5000/alltoy")
@@ -11,36 +12,55 @@ const AllToys = () => {
       .then((data) => setAlltoys(data));
   }, []);
 
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log("Delete Confirmed");
-        fetch(`http://localhost:5000/toy/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-              const remaining = alltoys.filter((alltoy) => alltoy._id !== id);
-              setAlltoys(remaining);
-            }
-          });
-      }
-    });
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/searchToy/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAlltoys(data);
+      });
   };
+
+  // const handleDelete = (id) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, delete it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       console.log("Delete Confirmed");
+  //       fetch(`http://localhost:5000/toy/${id}`, {
+  //         method: "DELETE",
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+  //           if (data.deletedCount > 0) {
+  //             Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+  //             const remaining = alltoys.filter((alltoy) => alltoy._id !== id);
+  //             setAlltoys(remaining);
+  //           }
+  //         });
+  //     }
+  //   });
+  // };
 
   return (
     <div>
+      <div className="text-center my-4">
+        <input
+          onChange={(e) => setSearchText(e.target.value)}
+          type="text"
+          placeholder="Search with your toy name"
+          className="input input-bordered w-full max-w-xs mr-2"
+        />
+        <button onClick={handleSearch} className="btn btn-accent">
+          Search Toy
+        </button>
+      </div>
       <div className="overflow-x-auto my-8">
         <table className="table table-compact w-full">
           <thead>
@@ -55,7 +75,7 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {alltoys.slice(0, 20).map((alltoy, index) => (
+            {alltoys.slice(0, 120).map((alltoy, index) => (
               <tr key={alltoy._id}>
                 <th>{index + 1}</th>
                 <td>{alltoy.sellername}</td>
@@ -65,14 +85,7 @@ const AllToys = () => {
                 <td>{alltoy.quantity}</td>
                 <td>
                   <button className="btn btn-secondary mr-2">
-                    <Link to={`/toy/${alltoy._id}`}>View Details</Link>
-                  </button>
-
-                  <button
-                    onClick={() => handleDelete(alltoy._id)}
-                    className="btn btn-accent"
-                  >
-                    Delete
+                    <Link to={`/toyview/${alltoy._id}`}>View Details</Link>
                   </button>
                 </td>
               </tr>
