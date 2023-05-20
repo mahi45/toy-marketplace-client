@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const AllToys = () => {
   const [alltoys, setAlltoys] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:5000/alltoy")
       .then((res) => res.json())
@@ -20,6 +21,7 @@ const AllToys = () => {
         setAlltoys(remaining);
       });
   };
+
   return (
     <div>
       <div className="overflow-x-auto my-8">
@@ -36,7 +38,7 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {alltoys.map((alltoy, index) => (
+            {alltoys.slice(0, 20).map((alltoy, index) => (
               <tr key={alltoy._id}>
                 <th>{index + 1}</th>
                 <td>{alltoy.sellername}</td>

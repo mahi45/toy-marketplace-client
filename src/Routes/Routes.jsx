@@ -6,6 +6,7 @@ import ToysLayout from "../Layouts/ToysLayout";
 import AddToys from "../Pages/Toys/AddToys/AddToys";
 import AllToys from "../Pages/Toys/AllToys/AllToys";
 import ToyDetails from "../Pages/Toys/AllToys/ToyDetails";
+import Mytoys from "../Pages/Toys/AllToys/Mytoys";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,16 @@ const router = createBrowserRouter([
       {
         path: "/alltoy",
         element: <AllToys></AllToys>,
+      },
+    ],
+  },
+  {
+    path: "/mytoys",
+    element: <ToysLayout></ToysLayout>,
+    children: [
+      {
+        path: "/mytoys",
+        element: <Mytoys></Mytoys>,
       },
     ],
   },
