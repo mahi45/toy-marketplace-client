@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -27,6 +27,19 @@ const Login = () => {
         setLoginError(error.message);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-2/3 mx-auto py-5 mt-5 mb-10 border">
@@ -107,7 +120,10 @@ const Login = () => {
             <span className="px-3 text-gray-500">Or continue with</span>
             <div className="flex-grow border-t border-gray-300"></div>
           </div>
-          <button className="flex items-center justify-center gap-2 p-2 rounded-lg mt-3 mx-auto bg-black text-white w-2/3">
+          <button
+            onClick={handleGoogleSignIn}
+            className="flex items-center justify-center gap-2 p-2 rounded-lg mt-3 mx-auto bg-black text-white w-2/3"
+          >
             <FaGoogle className="" />
             Google{" "}
           </button>

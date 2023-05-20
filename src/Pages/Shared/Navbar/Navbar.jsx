@@ -4,6 +4,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   const handleLogout = () => {
     logOut()
@@ -76,7 +77,7 @@ const Navbar = () => {
             {user && (
               <>
                 <img
-                  src={user.photoUrl}
+                  src={user.photoURL}
                   alt=""
                   title={user.displayName ? user.displayName : null}
                 />
