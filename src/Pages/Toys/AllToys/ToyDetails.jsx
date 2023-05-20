@@ -174,6 +174,7 @@ const ToyDetails = () => {
                   id="toysubcat"
                   name="toysubcat"
                   className="select select-bordered"
+                  defaultValue={toy.toysubcat}
                   value={selectedToyCategory}
                   onChange={handleChangeSelectedValue}
                 >

@@ -95,7 +95,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/toyview/:id",
-        element: <ToyDetailsReadOnly></ToyDetailsReadOnly>,
+        element: (
+          <PrivateRoute>
+            <ToyDetailsReadOnly></ToyDetailsReadOnly>
+          </PrivateRoute>
+        ),
       },
     ],
   },
