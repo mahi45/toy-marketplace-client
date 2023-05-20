@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Toyrow from "./Toyrow";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
   const [alltoys, setAlltoys] = useState([]);
@@ -8,6 +8,18 @@ const AllToys = () => {
       .then((res) => res.json())
       .then((data) => setAlltoys(data));
   }, []);
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/toy/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const remaining = alltoys.filter((alltoy) => alltoy._id !== id);
+        setAlltoys(remaining);
+      });
+  };
   return (
     <div>
       <div className="overflow-x-auto my-8">
@@ -25,7 +37,26 @@ const AllToys = () => {
           </thead>
           <tbody>
             {alltoys.map((alltoy, index) => (
-              <Toyrow key={alltoy._id} alltoy={alltoy} index={index}></Toyrow>
+              <tr key={alltoy._id}>
+                <th>{index + 1}</th>
+                <td>{alltoy.sellername}</td>
+                <td>{alltoy.toyname}</td>
+                <td>{alltoy.toysubcat}</td>
+                <td>{alltoy.toyprice}</td>
+                <td>{alltoy.quantity}</td>
+                <td>
+                  <button className="btn btn-secondary mr-2">
+                    <Link to={`/details/${alltoy._id}`}>View Details</Link>
+                  </button>
+
+                  <button
+                    onClick={() => handleDelete(alltoy._id)}
+                    className="btn btn-accent"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
