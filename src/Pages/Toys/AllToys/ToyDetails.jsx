@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ToyDetails = () => {
+  const navigate = useNavigate();
   const [toy, setToy] = useState([]);
   const { id } = useParams();
   useEffect(() => {
@@ -59,7 +61,18 @@ const ToyDetails = () => {
       body: JSON.stringify(toyDetails),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy updated Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          navigate("/alltoy");
+        }
+      });
   };
   return (
     <div className="w-2/3 mx-auto py-5 mt-5 mb-10 border px-6">
@@ -257,7 +270,7 @@ const ToyDetails = () => {
             type="submit"
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Update
+            Update Toy
           </button>
         </div>
       </form>

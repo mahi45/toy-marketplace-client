@@ -36,7 +36,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        setLoginError(error.message);
       });
   };
 
@@ -127,6 +127,7 @@ const Login = () => {
             <FaGoogle className="" />
             Google{" "}
           </button>
+          <p className="text-red-500 text-lg text-center my-2">{loginError}</p>
         </div>
       </div>
     </>

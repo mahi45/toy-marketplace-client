@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../Layouts/Main";
 import Login from "../Pages/LoginRegistration/Login/Login";
 import Register from "../Pages/LoginRegistration/Registration/Register";
 import ToysLayout from "../Layouts/ToysLayout";
@@ -10,6 +9,7 @@ import Mytoys from "../Pages/Toys/AllToys/Mytoys";
 import LoginLayout from "../Layouts/LoginLayout";
 import Home from "../Pages/Home/Home/Home";
 import PrivateRoute from "./PrivateRoute";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },
@@ -60,7 +64,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/mytoys",
-        element: <Mytoys></Mytoys>,
+        element: (
+          <PrivateRoute>
+            <Mytoys></Mytoys>
+          </PrivateRoute>
+        ),
       },
     ],
   },

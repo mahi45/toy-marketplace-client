@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllToys = () => {
   const [alltoys, setAlltoys] = useState([]);
@@ -11,15 +12,31 @@ const AllToys = () => {
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/toy/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const remaining = alltoys.filter((alltoy) => alltoy._id !== id);
-        setAlltoys(remaining);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("Delete Confirmed");
+        fetch(`http://localhost:5000/toy/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+              const remaining = alltoys.filter((alltoy) => alltoy._id !== id);
+              setAlltoys(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (

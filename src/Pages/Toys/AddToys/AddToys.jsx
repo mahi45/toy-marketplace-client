@@ -1,13 +1,12 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddToys = () => {
   const toys = [
-    { toyname: "Super Robot" },
-    { toyname: "Puzzle Game" },
-    { toyname: "Stuffed Bear" },
-    { toyname: "Remote Control Car" },
-    { toyname: "Building Blocks" },
-    { toyname: "Dollhouse" },
+    { toyname: "Chevrolet Camaro ZL1" },
+    { toyname: "Chevrolet Corvette" },
+    { toyname: "Chevrolet Corvette Z06" },
+    { toyname: "Ford Mustang" },
   ];
 
   const [selectedToyCategory, setselectedToyCategory] = useState(toys[0]);
@@ -39,7 +38,7 @@ const AddToys = () => {
       selleremail,
       description,
     };
-    console.log(toyDetails);
+    // console.log(toyDetails);
     fetch("http://localhost:5000/addtoy", {
       method: "POST",
       headers: {
@@ -48,7 +47,18 @@ const AddToys = () => {
       body: JSON.stringify(toyDetails),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Addded Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          form.reset();
+        }
+      });
   };
   return (
     <div className="w-2/3 mx-auto py-5 mt-5 mb-10 border px-6">
@@ -247,7 +257,7 @@ const AddToys = () => {
             type="submit"
             className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Register
+            Add New Toy
           </button>
         </div>
       </form>
