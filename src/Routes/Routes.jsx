@@ -7,12 +7,18 @@ import AddToys from "../Pages/Toys/AddToys/AddToys";
 import AllToys from "../Pages/Toys/AllToys/AllToys";
 import ToyDetails from "../Pages/Toys/AllToys/ToyDetails";
 import Mytoys from "../Pages/Toys/AllToys/Mytoys";
+import LoginLayout from "../Layouts/LoginLayout";
+import Home from "../Pages/Home/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element: <LoginLayout></LoginLayout>,
     children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
       {
         path: "/login",
         element: <Login></Login>,

@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Login = () => {
+  const [loginError, setLoginError] = useState("");
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+      });
+  };
   return (
     <>
       <div className="flex min-h-full flex-col justify-center px-6  lg:px-8 w-2/3 mx-auto py-5 mt-5 mb-10 border">
@@ -18,7 +39,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label
                 for="email"

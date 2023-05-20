@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navItems = (
     <>
       <li>
@@ -63,12 +73,26 @@ const Navbar = () => {
       <div className="navbar-end gap-2">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src="https://i.ibb.co/0mcCVyh/Mohidul-Hasan.jpg" />
+            {user && (
+              <>
+                <img
+                  src={user.photoUrl}
+                  alt=""
+                  title={user.displayName ? user.displayName : null}
+                />
+              </>
+            )}
           </div>
         </label>
-        <Link>
-          <button className="btn">Login</button>
-        </Link>
+        {user ? (
+          <button onClick={handleLogout} className="btn">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

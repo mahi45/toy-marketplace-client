@@ -12,11 +12,6 @@ const Main = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <Banner></Banner>
-      <Gallery></Gallery>
-      <ProductsByCat></ProductsByCat>
-      <Cta></Cta>
-      <NewsLetter></NewsLetter>
       <Outlet></Outlet>
       <Footer></Footer>
     </div>
