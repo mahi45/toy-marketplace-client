@@ -16,12 +16,10 @@ const ToyDetails = () => {
       });
   }, [id]);
   const toys = [
-    { toyname: "Super Robot" },
-    { toyname: "Puzzle Game" },
-    { toyname: "Stuffed Bear" },
-    { toyname: "Remote Control Car" },
-    { toyname: "Building Blocks" },
-    { toyname: "Dollhouse" },
+    { toyname: "Chevrolet Camaro ZL1" },
+    { toyname: "Chevrolet Corvette" },
+    { toyname: "Chevrolet Corvette Z06" },
+    { toyname: "Ford Mustang" },
   ];
   const [selectedToyCategory, setselectedToyCategory] = useState();
 
