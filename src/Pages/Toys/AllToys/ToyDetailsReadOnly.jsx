@@ -9,7 +9,7 @@ const ToyDetailsReadOnly = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`https://assignment11-server-gamma.vercel.app/toy/${id}`)
+    fetch(`http://localhost:5000/toy/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setToy(data);
@@ -31,11 +31,12 @@ const ToyDetailsReadOnly = () => {
     setselectedToyCategory(event.target.value);
   };
   return (
-    <div>
-      <h2 className="text-3xl">hi</h2>
-      <div className="w-2/3 mx-auto py-5 mt-5 mb-10 border px-6">
-        <h2 className="text-3xl mx-auto">Toy Details</h2>
-        <form className="space-y-6">
+    <div className="border">
+      <div className="w-2/3 mx-auto pb-5 mt-10 mb-10 border shadow-xl">
+        <h2 className="text-3xl mx-auto text-center py-8 bg-teal-100 w-full px-8 mb-8">
+          Toy Details
+        </h2>
+        <form className="space-y-6 p-6">
           {/* First Row Start */}
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -52,7 +53,7 @@ const ToyDetailsReadOnly = () => {
                   type="text"
                   required
                   defaultValue={toy.toyname}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -70,7 +71,7 @@ const ToyDetailsReadOnly = () => {
                   type="text"
                   required
                   defaultValue={toy.toyprice}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -92,7 +93,7 @@ const ToyDetailsReadOnly = () => {
                   type="url"
                   required
                   defaultValue={toy.toypicture}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -110,7 +111,7 @@ const ToyDetailsReadOnly = () => {
                   type="text"
                   required
                   defaultValue={toy.quantity}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -130,7 +131,7 @@ const ToyDetailsReadOnly = () => {
                   <select
                     id="toysubcat"
                     name="toysubcat"
-                    className="select select-bordered"
+                    className="select select-bordered px-2"
                     value={selectedToyCategory}
                     onChange={handleChangeSelectedValue}
                   >
@@ -157,7 +158,7 @@ const ToyDetailsReadOnly = () => {
                   type="text"
                   required
                   defaultValue={toy.rating}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -179,7 +180,7 @@ const ToyDetailsReadOnly = () => {
                   type="text"
                   required
                   defaultValue={toy.sellername}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -197,7 +198,7 @@ const ToyDetailsReadOnly = () => {
                   type="email"
                   required
                   defaultValue={toy.selleremail}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -218,7 +219,7 @@ const ToyDetailsReadOnly = () => {
                 type="text"
                 required
                 defaultValue={toy.description}
-                className="textarea textarea-bordered textarea-md w-full max-w-xs"
+                className="textarea textarea-bordered textarea-md w-full max-w-xs px-2"
               ></textarea>
             </div>
           </div>

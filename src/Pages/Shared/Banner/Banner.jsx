@@ -18,7 +18,7 @@ const Banner = () => {
               production house, marketing team, brand ambasador and our unique
               architect.
             </p>
-            <button className="btn btn-primary">See All Car</button>
+            <button className="btn btn-info text-black">See All Car</button>
           </div>
         </div>
       </div>

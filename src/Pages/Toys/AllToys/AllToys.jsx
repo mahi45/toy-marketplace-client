@@ -7,15 +7,13 @@ const AllToys = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("https://assignment11-server-gamma.vercel.app/alltoy")
+    fetch("http://localhost:5000/alltoy")
       .then((res) => res.json())
       .then((data) => setAlltoys(data));
   }, []);
 
   const handleSearch = () => {
-    fetch(
-      `https://assignment11-server-gamma.vercel.app/searchToy/${searchText}`
-    )
+    fetch(`http://localhost:5000/searchToy/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setAlltoys(data);
@@ -34,7 +32,7 @@ const AllToys = () => {
   //   }).then((result) => {
   //     if (result.isConfirmed) {
   //       console.log("Delete Confirmed");
-  //       fetch(`https://assignment11-server-gamma.vercel.app/toy/${id}`, {
+  //       fetch(`http://localhost:5000/toy/${id}`, {
   //         method: "DELETE",
   //       })
   //         .then((res) => res.json())
