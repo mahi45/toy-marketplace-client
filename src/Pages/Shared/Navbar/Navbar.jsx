@@ -1,10 +1,25 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  const loc = useLocation();
+  const [title, setTittle] = useState("Sports Car");
+
+  useEffect(() => {
+    if (loc.pathname === "/") {
+      document.title = `Sports Car`;
+      setTittle(document.title);
+    } else {
+      document.title = "Sports Car | " + `${loc.pathname.replace("/", "")}`;
+      setTittle(document.title);
+    }
+    if (loc.state) {
+      document.title = loc.state;
+      setTittle(document.title);
+    }
+  }, [loc.pathname]);
 
   const handleLogout = () => {
     logOut()
