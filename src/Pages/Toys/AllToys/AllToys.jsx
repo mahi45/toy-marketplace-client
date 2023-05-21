@@ -20,34 +20,6 @@ const AllToys = () => {
       });
   };
 
-  // const handleDelete = (id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       console.log("Delete Confirmed");
-  //       fetch(`http://localhost:5000/toy/${id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //           if (data.deletedCount > 0) {
-  //             Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-  //             const remaining = alltoys.filter((alltoy) => alltoy._id !== id);
-  //             setAlltoys(remaining);
-  //           }
-  //         });
-  //     }
-  //   });
-  // };
-
   return (
     <div className="border">
       <div className="text-center my-6">
@@ -75,7 +47,7 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {alltoys.slice(0, 120).map((alltoy, index) => (
+            {alltoys.slice(0, 20).map((alltoy, index) => (
               <tr key={alltoy._id}>
                 <th>{index + 1}</th>
                 <td>{alltoy.sellername}</td>

@@ -54,7 +54,7 @@ const ProductsByCat = () => {
           Ford Mustang
         </div>
       </div>
-      <div className="grid grid-cols-3 mt-4 mb-6">
+      <div className="grid grid-cols-3 mt-4 mb-6 gap-6">
         {alltoys?.map((alltoy) => (
           <SingleCatToy toy={alltoy}></SingleCatToy>
         ))}
