@@ -6,15 +6,15 @@ const ErrorPage = () => {
   const { error, status } = useRouteError();
   return (
     <section className="mx-auto text-center">
-      <FaceFrownIcon className="icon w-48 mx-auto text-teal-500" />
+      <FaceFrownIcon className="icon w-64 mx-auto text-teal-500" />
       <div>
-        <h2>
+        <h2 className="text-xl mb-2">
           <span className="">Error</span>
           {status || 404}
         </h2>
-        <p>{error?.message}</p>
+        <p className="text-xl mb-2">{error?.message}</p>
 
-        <button className="btn btn-accent">
+        <button className="btn btn-accent my-6">
           <Link to="/" className="text-white">
             Back to Sports Car
           </Link>
