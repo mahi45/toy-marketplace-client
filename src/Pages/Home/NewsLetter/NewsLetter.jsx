@@ -35,7 +35,7 @@ const NewsLetter = () => {
                 </button>
               </div>
             </div>
-            <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+            <dl className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
               <div className="flex flex-col items-start">
                 <div className="rounded-md bg-black/5 p-2 ring-1 ring-white/10">
                   <svg

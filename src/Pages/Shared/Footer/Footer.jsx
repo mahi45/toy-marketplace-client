@@ -4,7 +4,7 @@ import { FaBeer, FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className="grid grid-cols-4 footer p-10 bg-base-200 text-base-content">
         <div>
           <img
             src="https://i.ibb.co/BzGdpKC/transparent-logo.png"
@@ -38,7 +38,7 @@ const Footer = () => {
           </p>
         </div>
       </footer>
-      <footer className="footer items-center p-4 bg-neutral text-neutral-content">
+      <footer className="grid grid-cols-2 justify-between footer items-center p-4 bg-neutral text-neutral-content">
         <div className="items-center grid-flow-col">
           <img
             src="https://i.ibb.co/FJ7PrGF/logo.jpg"
@@ -47,7 +47,7 @@ const Footer = () => {
           />
           <p>Copyright © 2023 - All right reserved</p>
         </div>
-        <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <div className="grid-flow-col gap-4">
           <a className="text-xl">
             <FaYoutube></FaYoutube>
           </a>

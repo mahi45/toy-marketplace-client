@@ -17,21 +17,23 @@ const SingleCatToy = ({ toy }) => {
     }
   };
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
-      <figure>
-        <img src={toy.toypicture} alt="Sports Toy" />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">Name: {toy.toyname}</h2>
-        <p className="card-title">Price: {toy.toyprice}</p>
-        <p>Rating: {toy.rating}</p>
-        <div className="card-actions justify-center mt-4 mb-2">
-          <button
-            onClick={handleView}
-            className="btn btn-accent mr-2 text-white"
-          >
-            <Link to={`/toyview/${toy._id}`}>View Details</Link>
-          </button>
+    <div className="flex items-center justify-center">
+      <div className="card card-compact w-96 bg-base-100 shadow-xl sm:w-full sm:col-span-1">
+        <figure>
+          <img className="" src={toy.toypicture} alt="Sports Toy" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Name: {toy.toyname}</h2>
+          <p className="card-title">Price: {toy.toyprice}</p>
+          <p>Rating: {toy.rating}</p>
+          <div className="card-actions justify-center mt-4 mb-2">
+            <button
+              onClick={handleView}
+              className="btn btn-accent mr-2 text-white"
+            >
+              <Link to={`/toyview/${toy._id}`}>View Details</Link>
+            </button>
+          </div>
         </div>
       </div>
     </div>
