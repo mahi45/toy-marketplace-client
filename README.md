@@ -7,8 +7,9 @@
 - Blog page with some content
 - Trying to maintain overall folder structure
 - Some of the new package installed and works in this project
+- Learn something new about vercel
 
 ### Live Site Link
 
-- Client:
-- Server:
+- Client: https://assignment11-87997.web.app/
+- Server: https://assignment11-server-blush.vercel.app
