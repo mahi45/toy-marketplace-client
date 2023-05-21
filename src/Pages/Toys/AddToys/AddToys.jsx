@@ -39,7 +39,7 @@ const AddToys = () => {
       description,
     };
     // console.log(toyDetails);
-    fetch("http://localhost:5000/addtoy", {
+    fetch("https://assignment11-server-gamma.vercel.app/addtoy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

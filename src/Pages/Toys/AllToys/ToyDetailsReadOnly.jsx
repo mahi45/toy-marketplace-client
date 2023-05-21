@@ -9,7 +9,7 @@ const ToyDetailsReadOnly = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/toy/${id}`)
+    fetch(`https://assignment11-server-gamma.vercel.app/toy/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setToy(data);

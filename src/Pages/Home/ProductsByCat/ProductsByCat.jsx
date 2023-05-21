@@ -8,7 +8,7 @@ const ProductsByCat = () => {
   const [activeTab, setActiveTab] = useState("Chevrolet Camaro ZL1");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alltoy/${activeTab}`)
+    fetch(`https://assignment11-server-gamma.vercel.app/alltoy/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setAlltoys(result);
