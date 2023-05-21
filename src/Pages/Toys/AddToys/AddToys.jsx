@@ -61,10 +61,10 @@ const AddToys = () => {
       });
   };
   return (
-    <div className="w-2/3 mx-auto py-5 mt-5 mb-10 border px-6">
-      <h2 className="text-3xl text-center py-8">Add Toys</h2>
+    <div className="w-2/3 mx-auto pb-5 mt-10 mb-10 border">
+      <h2 className="text-3xl text-center py-8 bg-teal-50 w-full">Add Toys</h2>
       {/* Toy Name,Toy Price,picture,available quantity, Category, subcategory, , Rating, seller name, seller email, description */}
-      <form className="space-y-6" onSubmit={handleSubmit}>
+      <form className="space-y-6 p-6" onSubmit={handleSubmit}>
         {/* First Row Start */}
         <div className="grid grid-cols-2 gap-3">
           <div>

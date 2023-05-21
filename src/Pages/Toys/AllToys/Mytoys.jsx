@@ -44,8 +44,10 @@ const Mytoys = () => {
   };
 
   return (
-    <div>
-      <h2>My Toys</h2>
+    <div className="border">
+      <h2 className="text-center text-3xl font-bold bg-teal-50 py-6">
+        My Toys
+      </h2>
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">
           <thead>

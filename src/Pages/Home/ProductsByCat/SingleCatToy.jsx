@@ -25,8 +25,11 @@ const SingleCatToy = ({ toy }) => {
         <h2 className="card-title">Name: {toy.toyname}</h2>
         <p className="card-title">Price: {toy.toyprice}</p>
         <p>Rating: {toy.rating}</p>
-        <div className="card-actions justify-center">
-          <button onClick={handleView} className="btn btn-secondary mr-2">
+        <div className="card-actions justify-center mt-4 mb-2">
+          <button
+            onClick={handleView}
+            className="btn btn-accent mr-2 text-white"
+          >
             <Link to={`/toyview/${toy._id}`}>View Details</Link>
           </button>
         </div>

@@ -49,8 +49,8 @@ const AllToys = () => {
   // };
 
   return (
-    <div>
-      <div className="text-center my-4">
+    <div className="border">
+      <div className="text-center my-6">
         <input
           onChange={(e) => setSearchText(e.target.value)}
           type="text"

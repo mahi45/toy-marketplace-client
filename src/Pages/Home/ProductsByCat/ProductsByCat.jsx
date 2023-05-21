@@ -30,31 +30,31 @@ const ProductsByCat = () => {
       <h2 className="text-3xl text-center pb-6">Products By Category</h2>
       <div className="flex gap-3 justify-center py-3">
         <div
-          className="bg-teal-500 py-2 px-4"
+          className="bg-teal-500 py-2 px-4 rounded-lg text-white cursor-pointer"
           onClick={() => handleTabClick("Chevrolet Camaro ZL1")}
         >
           Chevrolet Camaro ZL1
         </div>
         <div
-          className="bg-teal-500 py-2 px-4"
+          className="bg-teal-500 py-2 px-4 rounded-lg text-white cursor-pointer"
           onClick={() => handleTabClick("Chevrolet Corvette")}
         >
           Chevrolet Corvette
         </div>
         <div
-          className="bg-teal-500 py-2 px-4"
+          className="bg-teal-500 py-2 px-4 rounded-lg text-white cursor-pointer"
           onClick={() => handleTabClick("Chevrolet Corvette Z06")}
         >
           Chevrolet Corvette Z06
         </div>
         <div
-          className="bg-teal-500 py-2 px-4"
+          className="bg-teal-500 py-2 px-4 rounded-lg text-white cursor-pointer"
           onClick={() => handleTabClick("Ford Mustang")}
         >
           Ford Mustang
         </div>
       </div>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 mt-4 mb-6">
         {alltoys?.map((alltoy) => (
           <SingleCatToy toy={alltoy}></SingleCatToy>
         ))}
